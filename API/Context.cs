@@ -1,9 +1,16 @@
 ﻿using DataModels;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+using Microsoft.Identity.Client;
+namespace API;
 
-namespace API
+public static class Context
 {
-    internal static class Context
+    private static DataManager _context;
+
+    public static DataManager Get()
     {
-        public static DataManager Data = DataManager.Get(DataProvidersList.SqlServer); 
+        if (_context == null) _context = DataManager.Get(DataProvidersList.SqlServer);
+        return _context;
     }
+    
 }

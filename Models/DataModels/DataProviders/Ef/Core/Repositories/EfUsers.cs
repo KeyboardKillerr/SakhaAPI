@@ -13,12 +13,12 @@ public class EfUsers : IUserRep
     public EfUsers(DataContext context) => Context = context;
     public IQueryable<User> Items => Context.Users;
 
-    public async Task<int> DeleteAsync(Guid id)
+    public async Task<int> CreateAsync(User table)
     {
-        var item = await Items.FirstOrDefaultAsync(x => x.Id == id);
-        if (item != default)
+        var item = await Items.FirstOrDefaultAsync(x => x.Id == table.Id || x.Name == table.Name || x.Email == table.Email);
+        if (item == default)
         {
-            Context.Remove(item);
+            await Context.AddAsync(table);
             return await Context.SaveChangesAsync();
         }
         return 0;
@@ -35,5 +35,16 @@ public class EfUsers : IUserRep
         if (item != default) Context.Update(table);
         else await Context.AddAsync(table);
         return await Context.SaveChangesAsync();
+    }
+
+    public async Task<int> DeleteAsync(Guid id)
+    {
+        var item = await Items.FirstOrDefaultAsync(x => x.Id == id);
+        if (item != default)
+        {
+            Context.Remove(item);
+            return await Context.SaveChangesAsync();
+        }
+        return 0;
     }
 }

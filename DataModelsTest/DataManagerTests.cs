@@ -14,7 +14,7 @@ namespace DataModels.Tests
         [TestMethod()]
         public void GetTest()
         {
-            var data = DataManager.Get(DataProvidersList.PostgreSQL);
+            var data = DataManager.Get(DataProvidersList.SqlServer);
 
             Assert.IsFalse(false);
         }

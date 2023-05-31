@@ -1,6 +1,6 @@
 ﻿using DataModels.DataProviders.Ef.Core;
 using Microsoft.EntityFrameworkCore;
-
+using System;
 namespace DataModels.DataProviders.Ef.Contexts;
 
 public class SqLiteDbContext : DataContext
