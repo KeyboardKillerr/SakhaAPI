@@ -12,7 +12,7 @@ public class User : EntityBase
     public static string ToHashString(string pass)
     {
         if (string.IsNullOrWhiteSpace(pass)) return "";
-        using SHA1 hash = SHA1.Create();
+        using SHA256 hash = SHA256.Create();
         return string
             .Concat(hash.ComputeHash(Encoding.UTF8.GetBytes(pass))
             .Select(x => x.ToString()));

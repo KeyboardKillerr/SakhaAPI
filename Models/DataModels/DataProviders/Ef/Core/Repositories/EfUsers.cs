@@ -38,7 +38,6 @@ public class EfUsers : IUserRep
             item.Name = table.Name;
             item.Password = table.Password;
             Context.Update(item);
-            //Context.Entry(table).State = EntityState.Modified;
         }
         else await Context.AddAsync(table);
         return await Context.SaveChangesAsync();
