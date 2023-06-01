@@ -32,7 +32,14 @@ public class EfUsers : IUserRep
     public async Task<int> UpdateAsync(User table)
     {
         var item = await Items.FirstOrDefaultAsync(x => x.Id == table.Id);
-        if (item != default) Context.Update(table);
+        if (item != default)
+        {
+            item.Email = table.Email;
+            item.Name = table.Name;
+            item.Password = table.Password;
+            Context.Update(item);
+            //Context.Entry(table).State = EntityState.Modified;
+        }
         else await Context.AddAsync(table);
         return await Context.SaveChangesAsync();
     }

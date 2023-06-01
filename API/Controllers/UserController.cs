@@ -44,7 +44,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(typeof(User), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateUser(UserPost userinfo)
         {
@@ -57,7 +57,7 @@ namespace API.Controllers
 
             var result = await ctx.User.CreateAsync(user);
             if (result == 0) return BadRequest();
-            return CreatedAtAction(nameof(GetUserById), user);
+            return NoContent();
         }
 
         [HttpPut("{id}")]
@@ -69,7 +69,6 @@ namespace API.Controllers
 
             if (id != user.Id) return BadRequest();
             var result = await ctx.User.UpdateAsync(user);
-            if (result == 0) return BadRequest();
             return NoContent();
         }
 
