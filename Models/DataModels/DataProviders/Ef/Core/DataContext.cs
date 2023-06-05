@@ -14,7 +14,7 @@ public class DataContext : DbContext
             Id = Guid.NewGuid(),
             Name = "root",
             Email = "None",
-            Password = Entities.User.ToHashString("root"),
+            Password = Entities.User.GetHashString("root")
         };
         mb.Entity<User>().HasData(client);
     }
