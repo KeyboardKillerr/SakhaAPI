@@ -3,23 +3,6 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
 	<Nullable>enable</Nullable>
-    <SqlServerConnectionString>
-		Data Source = DESKTOP-P105T05;
-		Initial Catalog = SahaDB;
-		Integrated Security = True;
-		TrustServerCertificate=True
-	</SqlServerConnectionString>
-    <SqliteConnectionString>
-		Host=localhost;
-		Port=5432;
-		Database=PostgreSQL 15;
-		Username=BackendEntry;
-		Password=12345!;
-		TrustServerCertificate=True
-	</SqliteConnectionString>
-    <PostgreSqlConnectionString>
-		Data Source = C:\Data\db.db
-	</PostgreSqlConnectionString>
   </PropertyGroup>
 
   <ItemGroup>
